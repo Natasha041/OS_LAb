@@ -46,9 +46,9 @@ void main()
 	{
 		pthread_create(&tid[i],NULL,producer,NULL);
 	}
-	pthraed_join(&c,NULL);
+	pthraed_join(c,NULL);
 	for(i=0;i<5;i++)
 	{
-		pthraed_join(&tid[i],NULL);
+		pthraed_join(tid[i],NULL);
 	}
 }
