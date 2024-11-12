@@ -1,0 +1,71 @@
+#!/bin/bash
+while true ;
+do 
+
+echo -e "Enter your choice"
+read ch
+v=1
+case $ch in
+	1) 
+		while [$v -eq 1]
+		do
+			echo "Enter eno"
+			read eno
+			echo "Enter ename"
+			read ename
+			
+			echo "Enter mobno"
+			read mobno
+			#pat="^(0-9)(10)$"
+			#whie[[!$mobno==$pat]]
+			#do
+			#echo "Please enter valid mobno"
+			read mobno
+			#done
+			
+			echo "Enter city"
+			read city
+			echo -e "$eno\t $ename\t $mobno\t $city">>emp.txt
+			echo -e "\n Do you want to continue ? press 1 to continue or press 0 for exit"
+			read v
+		done 
+		;;
+			
+	2)  
+		cat emp.txt ;;
+
+	3)  
+		echo -e "Enter Employee Name "
+	    read ename
+		grep $ename emp.txt
+		if[$ename>>emp.txt]
+		then
+			echo"Record Found"
+		else
+			echo"Record not Found"
+		fi
+        ;;		
+		
+	4)	
+		echo"\n Enter the employee you want to delete"
+		read ename
+		grep -v $ename emp.text>>temp.txt
+		rm emp.txt
+		mv temp.txt emp.txt
+		;;
+		
+	5)
+		echo -e "\n Enter the employee name you want to modify"
+		read ename
+		echo -e "\n Enter the new employee name"
+		read name 
+		sed -i s/$ename/$name/g emp.txt
+		;;
+		
+	6)
+		Exit
+		;;
+		
+	*)
+    esac
+done 	
